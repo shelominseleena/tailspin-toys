@@ -39,5 +39,13 @@ export default [
     languageOptions: {
       parser: tseslint.parser,
     },
+    rules: {
+      // Keep public and internal function contracts explicit for TypeScript tooling.
+      "@typescript-eslint/explicit-function-return-type": [
+        "error",
+        { allowExpressions: true },
+      ],
+      "@typescript-eslint/explicit-module-boundary-types": "error",
+    },
   },
 ];
