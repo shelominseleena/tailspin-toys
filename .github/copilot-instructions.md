@@ -33,11 +33,13 @@ This is a crowdfunding platform for games with a developer theme. The applicatio
 - Make sure all guidance in the Copilot Instructions file is updated with any relevant changes, including to project structure and scripts, and programming guidance
 
 ### Code formatting requirements
-- Every exported function should have a TSDoc comment describing its purpose, parameters, and return value.
-- Before imports or any code, add a comment block to the file that explains its purpose.
-
-- Use TypeScript with explicit types for function parameters and return values, especially in the data layer (`db/`, `src/lib/`)
-- Frontend code (TypeScript, Astro) must pass ESLint checks (`npm run lint`)
+- Comment intent, decisions, constraints, and trade-offs — not mechanics that are already clear from the code. Do not add comments that merely restate the next line.
+- Keep comments current. Update or remove a comment in the same change as the code it describes; an outdated comment is a defect.
+- Every exported function in `db/` and `src/lib/` must have a TSDoc comment describing its purpose, parameters, and return value. Document the injectable `db` parameter explicitly on data-access helpers.
+- Every reusable `.astro` component must document its `Props` interface so its component contract is clear to callers.
+- Use TypeScript with explicit types for function parameters and return values, especially in the data layer (`db/`, `src/lib/`). Follow the existing four-space indentation, single quotes, semicolons, and trailing commas in multiline constructs.
+- Frontend code (TypeScript, Astro) must pass ESLint checks (`npm run lint`); the TypeScript ESLint configuration enforces explicit function return types.
+- Add a file-level purpose comment only when the file's purpose is not already obvious from its name and structure. Never add boilerplate comments solely to satisfy a checklist.
 
 ### Data Layer Patterns (Drizzle + Node SQLite)
 
